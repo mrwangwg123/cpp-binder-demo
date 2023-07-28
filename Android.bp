@@ -1,0 +1,36 @@
+cc_defaults {
+    name: "my_mock_defaults",
+    cflags: [
+        "-Wall",
+        "-Werror",
+        "-Wunused-parameter",
+    ],
+
+    shared_libs: [
+        "libbase",
+        "libbinder",
+        "liblog",
+        "libutils",
+        "libhidltransport",
+    ],
+
+    local_include_dirs: ["include"],
+}
+
+cc_binary {
+    name: "my_mock_service",
+    defaults: ["my_mock_defaults"],
+    srcs: [ 
+        "src/my_mock.cpp",
+        "src/my_mock_service.cpp",
+    ],
+}
+
+cc_binary {
+    name: "my_mock_client",
+    defaults: ["my_mock_defaults"],
+    srcs: [ 
+        "src/my_mock.cpp",
+        "src/my_mock_client.cpp",
+    ],
+}
